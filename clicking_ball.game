@@ -1,0 +1,42 @@
+# Projects
+
+#1. Draw an ellipse at a random location on the screen.
+#2. Store the location info in a variable (PVector?)
+#3. Define the mousePressed() function. When the user clicks,
+#   assign a new location to the ball.
+#4. Create a score variable. When the user clicks (same function above,
+#   add +1 to the score.
+#5. Display the score using the text() function.
+#6. Now, when the user clicks, use the mouseX and mouseY variables, within the
+#   mousePressed() function, compare those values to the location of the ellipse. 
+#   If the mouse location is within a certain range, then you add to the 
+#   score and change the ellipse location.
+#7. Add a second ball, with its own position variable, and its own score, and
+#   its own click detection in the mousePressed() function.
+#8. If a player reaches a score of 10, they win. Code this.
+ball_size = 40
+pos_x = random(0, 400) 
+pos_y = random(0, 400)
+score = 0
+def setup():
+    size(400, 400)
+
+def draw():
+    background(0)
+    global score
+    fill(255)
+    ellipse(pos_x, pos_y, ball_size, ball_size)
+
+    fill(255, 0, 0)
+    textSize(50)
+    text(score, 50, 50)
+def mousePressed():
+    global pos_x
+    global pos_y
+    global score
+    pos_x = random(0, 400)
+    pos_y = random(0, 400)
+    score += 1 
+    
+radius = ball_size / 2
+distance_x = 
