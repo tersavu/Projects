@@ -1,0 +1,33 @@
+pos_x = random(400)
+score = 0
+ball_size = 40
+y_speed = 0
+pos_y = 50 + y_speed
+def setup():
+    size(400, 400)
+    
+def draw():
+    global y_speed
+    global pos_x
+    global score
+    background(0)
+    fill(255)
+    ellipse(pos_x, pos_y, ball_size, ball_size)
+    y_speed += 2
+    if y_speed >= 402:
+        y_speed = 0
+        pos_x = random(400)
+    
+    fill(255, 0, 0)
+    textSize(50)
+    text(score, 50, 50)
+    
+    fill(192, 192, 192)
+    ellipse(mouseX, 350, ball_size, ball_size)
+    
+    radius = ball_size / 2 
+    distanceX = abs(mouseX - pos_x)
+    distanceY = abs(mouseY - y_speed + 50)
+    hypotenuse = sqrt(distanceX ** 2 + distanceY ** 2)
+    if hypotenuse <= radius:
+        pos_x = random(400)
