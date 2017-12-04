@@ -1,4 +1,4 @@
-pos_x = random(400)
+pos_x = 0
 score = 0
 ball_size = 40
 y_speed = 0
@@ -10,24 +10,32 @@ def draw():
     global y_speed
     global pos_x
     global score
+    global pos_y
     background(0)
+    # game ball
     fill(255)
-    ellipse(pos_x, pos_y, ball_size, ball_size)
-    y_speed += 2
+    ellipse(pos_x, 50 + y_speed, ball_size, ball_size)
+    y_speed += 4
     if y_speed >= 402:
         y_speed = 0
         pos_x = random(400)
+        score += 1
     
     fill(255, 0, 0)
     textSize(50)
     text(score, 50, 50)
-    
+    #player ball
     fill(192, 192, 192)
     ellipse(mouseX, 350, ball_size, ball_size)
     
+    global pos_x
+    global pos_y
     radius = ball_size / 2 
+    radius_player = ball_size / 2
     distanceX = abs(mouseX - pos_x)
-    distanceY = abs(mouseY - y_speed + 50)
+    distanceY = abs(mouseY - pos_y)
     hypotenuse = sqrt(distanceX ** 2 + distanceY ** 2)
-    if hypotenuse <= radius:
+    
+    if hypotenuse <= radius + radius_player:
         pos_x = random(400)
+        score += -1
