@@ -15,21 +15,30 @@
 #   its own click detection in the mousePressed() function.
 #8. If a player reaches a score of 10, they win. Code this.
 ball_size = 40
-pos_x = random(0, 400) 
-pos_y = random(0, 400)
-score = 0
+p1.pos_x = random(0, 200) 
+p1.pos_y = random(0, 400)
+p2.pos_x = random(0, 200)
+p2.pos_y = random(0, 400)
+p1.score = 0
+p2.score = 0
 def setup():
     size(400, 400)
 
 def draw():
+    global p1.pos_x
+    global p1.pos_y
+    global p1.score
+    global p2.score
     background(0)
-    global score
+    
+    fill(137, 206, 138)
+    rect(0, 0, width/2, height)
     fill(255)
-    ellipse(pos_x, pos_y, ball_size, ball_size)
+    ellipse(p1.pos_x, p1.pos_y, ball_size, ball_size)
 
     fill(255, 0, 0)
     textSize(50)
-    text(score, 50, 50)
+    text("Score:" + str(p1.score), 50, 50)
 def mousePressed():
     global pos_x
     global pos_y
@@ -38,5 +47,11 @@ def mousePressed():
     pos_y = random(0, 400)
     score += 1 
     
-radius = ball_size / 2
-distance_x = 
+radius = ball_size / 2.0
+distance_x = abs(mouseX - pos_x)
+distance_y = abs(mouseY - pos_y)
+hypotenuse = sqrt(distance_x ** 2 + distance_y ** 2)
+if hypotenuse <+ radius:
+    pos_x = random(0, width)
+    pos_y = random(0, height)
+    score += 1 
